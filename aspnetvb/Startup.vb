@@ -2,6 +2,9 @@
 Imports Microsoft.AspNetCore.Hosting
 Imports Microsoft.Extensions.Configuration
 Imports Microsoft.Extensions.DependencyInjection
+Imports Microsoft.AspNetCore.Mvc
+Imports Microsoft.EntityFrameworkCore
+
 
 Public Class Startup
 
@@ -14,7 +17,11 @@ Public Class Startup
 
 
     Public Sub ConfigureServices(services As IServiceCollection)
+
         services.AddMvc()
+        services.AddDbContext(Of ValuesContextVb)(Function(opt) opt.UseInMemoryDatabase("ValuesList"))
+
+
     End Sub
 
 
